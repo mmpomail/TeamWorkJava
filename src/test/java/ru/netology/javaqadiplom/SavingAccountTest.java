@@ -92,19 +92,19 @@ public class SavingAccountTest {
     @Test
     public void testIfRateIsNegative() {
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> new SavingAccount(1_000, 1_000, 1_000, -1));
+                () -> new SavingAccount(2_000, 1_000, 10_000, -1));
     }
 
     @Test
     public void testIfNegativeMinBalance() {
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> new SavingAccount(1_000, -1_000, 1_000, 5));
+                () -> new SavingAccount(2_000, -1_000, 10_000, 5));
     }
 
     @Test
     public void testIfMaxBalanceLowerThanMinBalance() {
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> new SavingAccount(1000, 5000, 1000, 5));
+                () -> new SavingAccount(500, 5_000, 1_000, 5));
     }
 
 }
