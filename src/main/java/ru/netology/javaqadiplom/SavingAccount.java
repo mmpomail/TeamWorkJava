@@ -36,6 +36,12 @@ public class SavingAccount extends Account {
                     "Минимальный баланс не может быть отрицательным. А у вас minBalance = " + minBalance
             );
         }
+        if (initialBalance < minBalance) {
+            throw new IllegalArgumentException(
+                    "Исходный баланс не может быть меньше минимального баланск. А у вас initialBalance = " + initialBalance
+            );
+        }
+
 
         this.balance = initialBalance;
         this.minBalance = minBalance;
@@ -61,8 +67,8 @@ public class SavingAccount extends Account {
         if (amount > balance) {
             return false;
         }
-        balance = balance - amount;
-        if (balance > minBalance) {
+        if (balance - amount >= minBalance) {
+            balance -= amount;
             return true;
         } else {
             return false;
